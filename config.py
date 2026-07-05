@@ -1,20 +1,20 @@
 import os, logging, sys
 
-API_ID = 35705631
-API_HASH = "f99495d459f190bb24c74d309a8d635e"
-BOT_TOKEN = "8995626075:AAG03qYcSoiwIxwxkdmlE6ownW-ppyrmwIk"
+API_ID = 1796091
+API_HASH = "cd65e421230a205426e5e015dc9acd"
+BOT_TOKEN = ":"
 
 DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "")
 
 PORT = 6000
-OWNER_ID = 8531722224
-ADMINS = [OWNER_ID,8531722224]
+OWNER_ID = 8940899601
+ADMINS = [OWNER_ID,8683109783]
 TG_BOT_WORKERS = 4
 
 VERIFY_EXPIRE = 12 * 3600
-DB_ID = -1004362567395
-CHANNEL_ID = -1004362567395
+DB_ID = -1003879117878
+CHANNEL_ID = -1003879117878
 waiting_timer_status = False
 REFERRAL_REWARD_DAYS = 1
 BYPASS_LIMIT = 1
@@ -22,6 +22,8 @@ BYPASS_LIMIT = 1
 PICS = [
     "https://i.postimg.cc/3R0rnHFb/image.png"
 ]
+
+ADMIN_CONTACT_LINK = "https://t.me/your_username_here"
 
 
 commands = [
@@ -46,11 +48,11 @@ ADMIN_CMD = [
 
 PAYMENT_ACCOUNTS = {
     "ronak": {
-        "upi": "BHARATPE2P0Y0X1Y3L02804@unitype",
+        "upi": "paytm.s2hvv3il@pty",
         "merchant": "sPATsm3k9982251499052"
     },
     "kartik": {
-        "upi": "BHARATPE2P0Y0X1Y3L02804@unitype",
+        "upi": "paytm.s1ms8ba@pty",
         "merchant": "YPfQEi05426608236469"
     }
 }
