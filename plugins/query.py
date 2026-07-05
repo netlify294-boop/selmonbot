@@ -153,6 +153,64 @@ async def refresh_panel_cb(client, q):
 async def close_stats(client, q):
     await q.message.delete()
 
+@Client.on_callback_query(filters.regex("show_all_cmds") & is_admin)
+async def show_all_cmds(client, q):
+    txt = (
+        "<b>📋 ALL BOT COMMANDS (A-Z)</b>\n\n"
+        "<blockquote>"
+        "/add_shortner - Add a URL shortener API\n"
+        "/addadmin - Add a new admin\n"
+        "/addfsub - Add a force-subscribe channel\n"
+        "/addpaid - Manually grant premium to a user\n"
+        "/admin - Open the admin settings panel\n"
+        "/ban - Ban a user\n"
+        "/banlist - List all banned users\n"
+        "/check_refers - Check referral stats\n"
+        "/del_shortner - Remove a URL shortener\n"
+        "/deladmin - Remove an admin\n"
+        "/delfsub - Remove a force-subscribe channel\n"
+        "/envelope - Create claim/reward links\n"
+        "/free - Toggle free access mode\n"
+        "/genlink - Generate a file share link\n"
+        "/help - Show help menu\n"
+        "/id - Get user/chat/channel ID\n"
+        "/list_shortner - List URL shorteners\n"
+        "/listadmin - List all admins\n"
+        "/listban - List banned users\n"
+        "/listfsub - List force-subscribe channels\n"
+        "/listpaid - List premium users\n"
+        "/myplan - Check your premium plan status\n"
+        "/pf or /protectfile - Toggle content protection\n"
+        "/refer - Get your referral link\n"
+        "/removepaid - Remove premium from a user\n"
+        "/reqfsub - Set request-based force-subscribe\n"
+        "/reset_free_count - Reset free trial counters\n"
+        "/restart - Restart the bot\n"
+        "/ronak - Generate a payment QR\n"
+        "/set_free_limit - Set the free trial limit\n"
+        "/start - Start the bot\n"
+        "/stats - Show bot statistics\n"
+        "/status - Show system status\n"
+        "/toggle_refer - Enable/disable referral system\n"
+        "/token - Manage verification tokens\n"
+        "/unban - Unban a user\n"
+        "/update - Update the bot (git pull)\n"
+        "/usep - Admin utility command\n"
+        "/verification - Manage verification settings\n"
+        "/verify - Verify a payment\n"
+        "/video - Trigger video content\n"
+        "/waiting_timer - Set the waiting timer"
+        "</blockquote>"
+    )
+    await client.edit_message_text(
+        q.message.chat.id, q.message.id, txt,
+        parse_mode=ParseMode.HTML,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data="refresh_panel")]]
+        )
+    )
+    await q.answer()
+
 @Client.on_callback_query(filters.regex("close"))
 async def close_msg_callback(_, cq):
     await cq.message.delete()
@@ -471,9 +529,10 @@ async def buy_and_verify_handler(client: Client, query: CallbackQuery):
                         f"━━━━━━━━━━━━━━━━━━━━\n"
                         f"📲 <b>Sᴄᴀɴ ᴛʜᴇ QR ᴡɪᴛʜ ᴀɴʏ UPI ᴀᴘᴘ ᴛᴏ ᴘᴀʏ.</b>\n\n"
                         f"<blockquote>⚡ Pʀᴇᴍɪᴜᴍ ᴀᴄᴛɪᴠᴀᴛᴇs ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴡɪᴛʜɪɴ <b>5 ᴍɪɴᴜᴛᴇs</b> ᴏғ ᴘᴀʏᴍᴇɴᴛ.</blockquote></b>",
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton("⏳ 𝖤𝖷𝖯𝖨𝖱𝖤𝖲 𝖨𝖭 05:00", callback_data="none")
-                ]]),
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("⏳ 𝖤𝖷𝖯𝖨𝖱𝖤𝖲 𝖨𝖭 05:00", callback_data="none")],
+                    [InlineKeyboardButton("💬 ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ", url=ADMIN_CONTACT_LINK)]
+                ]),
                 parse_mode=ParseMode.HTML
             )
 
@@ -512,8 +571,8 @@ async def buy_and_verify_handler(client: Client, query: CallbackQuery):
                             ).strftime("%d-%b-%Y %I:%M %p")
 
                             LOG_CHANNELS = {
-                                "kartik": -1004296723301,
-                                "ronak": -1004296723301
+                                "kartik": -1003821473525,
+                                "ronak": -1003951957816
                             }
 
                             channel_id = LOG_CHANNELS.get(user_orders[order_id]["account"])
