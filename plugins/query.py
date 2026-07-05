@@ -571,8 +571,8 @@ async def buy_and_verify_handler(client: Client, query: CallbackQuery):
                             ).strftime("%d-%b-%Y %I:%M %p")
 
                             LOG_CHANNELS = {
-                                "kartik": -1003821473525,
-                                "ronak": -1003951957816
+                                "kartik": -1004296723301,
+                                "ronak": -1004296723301
                             }
 
                             channel_id = LOG_CHANNELS.get(user_orders[order_id]["account"])
