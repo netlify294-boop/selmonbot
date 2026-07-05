@@ -42,6 +42,7 @@ async def admin_cmd(client, message):
         [InlineKeyboardButton(f"📤 sᴇɴᴅ ᴍᴇᴅɪᴀ ᴍᴏᴅᴇ: {mode_icon}", callback_data="toggle_media_mode")],
         [InlineKeyboardButton("✏️ sᴇᴛ ᴄᴀᴘ", callback_data="set_custom_caption"),
          InlineKeyboardButton("🔗 sᴇᴛ ʙᴛɴ", callback_data="set_custom_btn")],
+        [InlineKeyboardButton("📋 ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs", callback_data="show_all_cmds")],
         [InlineKeyboardButton("🔄 ʀᴇғʀᴇsʜ", callback_data="refresh_panel"),
          InlineKeyboardButton("❌ ᴄʟᴏsᴇ", callback_data="close_stats")]
     ])
