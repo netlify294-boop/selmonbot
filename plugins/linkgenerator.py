@@ -5,6 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from database import *
 from config import *
 from helper import *
+from plugins.scrapper import encode
 
 _temp, _batch_tasks, _batch_session = {}, {}, {}
 _batch_links = {}   # <-- stores batch ids
@@ -158,6 +159,22 @@ async def generate_link_cb(client, cb: CallbackQuery):
     )
 
     await cb.answer("✅ ʟɪɴᴋs ɢᴇɴᴇʀᴀᴛᴇᴅ")
+
+
+@Client.on_message(filters.video & filters.private & filters.user(ADMINS))
+async def auto_genlink(c, m):
+    fwd = await m.forward(CHANNEL_ID)
+
+    token = encode(f"get-{fwd.id}")
+    link = f"https://t.me/{c.username}?start={token}"
+
+    await m.reply(
+        f"<b>𝗣𝗢𝗢𝗞𝗜£ 𝗚 : 🍫\n\n<blockquote>𝖧𝖾𝗋𝖾 𝗂𝗌 𝗒𝗈𝗎𝗋 𝖲𝗍𝗎𝖿𝖿 : ⬇️\n\n{link}</blockquote></b>",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("⚡ sʜᴀʀᴇ", url=f"https://t.me/share/url?url={link}")]
+        ])
+    )
 
 
 @Client.on_message(filters.command("genlink") & filters.private)
