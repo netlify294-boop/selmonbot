@@ -4,8 +4,8 @@ API_ID = 34999432
 API_HASH = "631117ef44de6b6628da129dd4f4406c"
 BOT_TOKEN = "8626993234:AAE4BTXWRaNHt7vmJ43wQ_WoPrjOQvuD2zw"
 
-DB_URI = os.environ.get("DATABASE_URL", "")
-DB_NAME = os.environ.get("DATABASE_NAME", "")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://nikl85743_db_user:4ztyZ1IVyVID6z3y@cluster0.6tgpbcj.mongodb.net/?appName=Cluster0")
+DB_NAME = os.environ.get("DATABASE_NAME", "None")
 
 PORT = 6000
 OWNER_ID = 8414819080
